@@ -22,7 +22,7 @@ function initAssistant() {
     let command = event.results[0][0].transcript.toLowerCase().trim();
     console.log("You said:", command);
 
-    // 🔹 Wake Word
+    //  Wake Word
     if (!assistantActive) {
       if (command.includes("jarvis")) {
         assistantActive = true;
@@ -31,7 +31,7 @@ function initAssistant() {
       return;
     }
 
-    // 🔹 Navigation Commands
+    //  Navigation Commands
     if (command.includes("project")) {
       document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
       speak("Opening project section");
@@ -53,59 +53,63 @@ function initAssistant() {
       document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
         speak("Opening contact section");}
 
+
     else if (command.includes("scroll down")) {
       window.scrollBy({ top: 500, behavior: "smooth" });
       speak("Scrolling down");
 
-    } 
-    else if (command.includes("scroll up")) {
+    } else if (command.includes("scroll up")) {
       window.scrollBy({ top: -500, behavior: "smooth" });
       speak("Scrolling up");
 
     
-    } 
- //  Open Websites (FIXED)
+    }  
+      //  Open Websites (FIXED)
     else if(command.includes("open google")){
-    speak("Opening Google");
-     window.location.href = "https://www.google.com";
-  }
-      
-     else if (command.includes("open youtube")) {
-    speak("opening youtube");
-      window.location.href="https://www.youtube.com";
+  speak("opening google");
+  window.location.href="https://www.google.com";
+}
 
-    }
-  else if (command.includes("open whatsapp")) {
-    speak("opening wahatsapp");
-      window.location.href="https://web.whatsapp.com";
-    }
-  else if (command.includes("open instagram")) {
-    
-    speak("opening instagram");
-      window.location.href="https://www.instagram.com";
+     else if (command.includes("open youtube")) {
+      speak("opening youtube");
+  window.location.href="https://www.youtube.com";
 
     } 
-    //  Time
-  else if (command.includes("time")) {
+    else if (command.includes("open whatsapp")) {
+      
+      speak("opening whatsapp");
+     window.location.href="https://www.whatsapp.com";
+
+    } 
+    else if (command.includes("open instagram")) {
+       speak("opening instagram");
+     window.location.href="https://www.instagram.com";
+
+ 
+    } 
+         // Time
+    else if (command.includes("time")) {
       let time = new Date().toLocaleTimeString();
       speak("Current time is " + time);
 
-       } 
-     // Date
-
-  else if (command.includes("date")) {
+   
+    }
+     //  Date 
+    else if (command.includes("date")) {
       let date = new Date().toDateString();
       speak("Today's date is " + date);
 
-       }
-      // Stop Assistant
-  else if (command.includes("stop")) {
+    
+    } 
+    //  Stop Assistant
+    else if (command.includes("stop")) {
       speak("Okay Sachin, assistant stopped");
       assistantActive = false;
 
     
-    } 
-  //  Unknown Command → Google Searchelse {
+    }
+    //  Unknown Command → Google Search
+    else {
       openSite(`https://www.google.com/search?q=${command}`, "Searching on Google");
     }
   };
@@ -147,7 +151,7 @@ function speak(text) {
   speechSynthesis.speak(utter);
 }
 
-// Safe Website Opening Function
+// 🔥 Safe Website Opening Function
 function openSite(url, message) {
   recognition.stop();
   isSpeaking = true;
@@ -165,6 +169,3 @@ function openSite(url, message) {
 
   speechSynthesis.speak(utter);
 }
-
-
-
