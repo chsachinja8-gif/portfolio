@@ -147,7 +147,7 @@ function speak(text) {
   speechSynthesis.speak(utter);
 }
 
-// 🔥 Safe Website Opening Function
+// Safe Website Opening Function
 function openSite(url, message) {
   recognition.stop();
   isSpeaking = true;
@@ -165,5 +165,6 @@ function openSite(url, message) {
 
   speechSynthesis.speak(utter);
 }
+
 
 
