@@ -53,13 +53,10 @@ function initAssistant() {
       document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
         speak("Opening contact section");}
 
-  else if(command.includes("open google")){
-  let a = document.createElement("a");
-  a.href = "https://www.google.com";
-  a.target = "_blank";
-  a.click();
-}
-
+   else if(command.includes("open google")){
+    speak("Opening Google");
+     window.location.href = "https://www.google.com";
+  }
     else if (command.includes("scroll down")) {
       window.scrollBy({ top: 500, behavior: "smooth" });
       speak("Scrolling down");
@@ -69,17 +66,20 @@ function initAssistant() {
       speak("Scrolling up");
 
     // 🔹 Open Websites (FIXED)
-    } else if (command.includes("open google")) {
-      openSite("https://www.google.com", "Opening Google");
+    } 
 
     } else if (command.includes("open youtube")) {
-      openSite("https://www.youtube.com", "Opening YouTube");
+    speak("opening youtube");
+      window.location.href="https://www.youtube.com";
 
     } else if (command.includes("open whatsapp")) {
-      openSite("https://web.whatsapp.com", "Opening WhatsApp");
-
-    } else if (command.includes("open instagram")) {
-      openSite("https://www.instagram.com", "Opening Instagram");
+    speak("opening wahatsapp");
+      window.location.href="https://web.whatsapp.com";
+    }
+  else if (command.includes("open instagram")) {
+    
+    speak("opening instagram");
+      window.location.href="https://www.instagram.com";
 
     // 🔹 Time
     } else if (command.includes("time")) {
@@ -157,3 +157,4 @@ function openSite(url, message) {
 
   speechSynthesis.speak(utter);
 }
+
