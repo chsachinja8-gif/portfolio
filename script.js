@@ -53,26 +53,29 @@ function initAssistant() {
       document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
         speak("Opening contact section");}
 
-   else if(command.includes("open google")){
-    speak("Opening Google");
-     window.location.href = "https://www.google.com";
-  }
     else if (command.includes("scroll down")) {
       window.scrollBy({ top: 500, behavior: "smooth" });
       speak("Scrolling down");
 
-    } else if (command.includes("scroll up")) {
+    } 
+    else if (command.includes("scroll up")) {
       window.scrollBy({ top: -500, behavior: "smooth" });
       speak("Scrolling up");
 
-    // 🔹 Open Websites (FIXED)
+    
     } 
-
-    } else if (command.includes("open youtube")) {
+ //  Open Websites (FIXED)
+    else if(command.includes("open google")){
+    speak("Opening Google");
+     window.location.href = "https://www.google.com";
+  }
+      
+     else if (command.includes("open youtube")) {
     speak("opening youtube");
       window.location.href="https://www.youtube.com";
 
-    } else if (command.includes("open whatsapp")) {
+    }
+  else if (command.includes("open whatsapp")) {
     speak("opening wahatsapp");
       window.location.href="https://web.whatsapp.com";
     }
@@ -81,23 +84,28 @@ function initAssistant() {
     speak("opening instagram");
       window.location.href="https://www.instagram.com";
 
-    // 🔹 Time
-    } else if (command.includes("time")) {
+    } 
+    //  Time
+  else if (command.includes("time")) {
       let time = new Date().toLocaleTimeString();
       speak("Current time is " + time);
 
-    // 🔹 Date
-    } else if (command.includes("date")) {
+       } 
+     // Date
+
+  else if (command.includes("date")) {
       let date = new Date().toDateString();
       speak("Today's date is " + date);
 
-    // 🔹 Stop Assistant
-    } else if (command.includes("stop")) {
+       }
+      // Stop Assistant
+  else if (command.includes("stop")) {
       speak("Okay Sachin, assistant stopped");
       assistantActive = false;
 
-    // 🔹 Unknown Command → Google Search
-    } else {
+    
+    } 
+  //  Unknown Command → Google Searchelse {
       openSite(`https://www.google.com/search?q=${command}`, "Searching on Google");
     }
   };
@@ -157,4 +165,5 @@ function openSite(url, message) {
 
   speechSynthesis.speak(utter);
 }
+
 
